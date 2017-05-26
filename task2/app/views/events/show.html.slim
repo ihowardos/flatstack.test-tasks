@@ -2,14 +2,14 @@ p#notice = notice
 
 p
   strong Title:
-  = @event.title
+  = event.title
 p
   strong Description:
-  = @event.description
+  = event.description
 p
   strong Date:
-  = @event.date
+  = event.date
 
-= link_to 'Edit', edit_event_path(@event)
+= link_to 'Edit', edit_event_path(event)
 '  |
 = link_to 'Back', events_path
