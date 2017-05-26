@@ -1,0 +1,17 @@
+.user-panel
+  .panel.panel-default
+    .panel-body
+      .default-information
+        h4 ="#{user.name} #{user.surname}"
+        .photo
+          | photo here
+        br
+        b Age:
+      .contact-information
+        b Tel:
+        br
+        b e-mail:
+        =" #{user.email}"
+        br
+      .action
+        =link_to "Edit", edit_user_registration_path if current_user.id == user.id
