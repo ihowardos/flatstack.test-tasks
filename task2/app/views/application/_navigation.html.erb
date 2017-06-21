@@ -21,16 +21,17 @@
           <li><a href="/">Home</a></li>
         <% end %>
 
-        <% if current_page? events_path %>
-          <li class="active"><%= link_to 'Events', events_path %>
-        <% else %>
-          <li><%= link_to 'Events', events_path %>
-        <% end %>
 
         <% if current_page? new_event_path %>
           <li class="active"><%= link_to 'Create event', new_event_path %>
         <% else %>
           <li><%= link_to 'Create event', new_event_path %>
+        <% end %>
+
+        <% if current_page? pages_about_path %>
+          <li class="active"><%= link_to 'About us', pages_about_path %>
+        <% else %>
+          <li><%= link_to 'About us', pages_about_path %>
         <% end %>
       </ul>
 

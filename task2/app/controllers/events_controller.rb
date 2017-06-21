@@ -4,6 +4,10 @@ class EventsController < ApplicationController
   expose_decorated :event
   expose_decorated :events, -> { fetch_events }
 
+  def index
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+  end
+
   def create
     event.user_id = current_user.id
     if event.save

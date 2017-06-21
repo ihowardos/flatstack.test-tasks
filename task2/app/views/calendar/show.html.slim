@@ -1,0 +1,15 @@
+.row
+  .col-md-12.text-center
+    .well.controls
+      = link_to "<", calendar_path(date: @date - 1.month), class: "btn btn-default", style:"float: left"
+      = " #{@date.strftime("%B")} #{@date.year} "
+      = link_to ">", calendar_path(date: @date + 1.month), class: "btn btn-default", style:"float: right"
+
+
+.row
+  .col-md-12
+    = calendar @date do |date|
+      .test
+        = date.day
+    end
+
