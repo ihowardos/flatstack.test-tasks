@@ -14,5 +14,7 @@
     = f.text_area :description, class:"form-control"
   .form-group
     = f.label :date
-    = f.datetime_select :date
-  .actions = f.submit
+    br
+    = f.datetime_select :date, :minute_step => 15
+  .actions
+    = f.submit "Create event", class:"btn btn-success"

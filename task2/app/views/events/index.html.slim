@@ -1,6 +1,4 @@
-h1 Listing events
-
-table
+table class="table table-hover"
   thead
     tr
       th Title
@@ -22,4 +20,4 @@ table
 
 br
 
-= link_to 'New Event', new_event_path
+= link_to 'New Event', new_event_path if !current_user.nil?

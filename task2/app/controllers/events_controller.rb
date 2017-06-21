@@ -29,6 +29,7 @@ class EventsController < ApplicationController
   private
     def fetch_events
       events = Event.all
+      events = Event.where(user_id: current_user.id) if !current_user.nil?
       events
     end
 
