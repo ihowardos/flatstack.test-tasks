@@ -1,9 +1,6 @@
 class CalendarDecorator < Draper::Decorator
   delegate_all
 
-  def calendar(date = Date.today, &block)
-    Calendar.new(self, date, block).table
-  end
   # Define presentation-specific methods here. Helpers are accessed through
   # `helpers` (aka `h`). You can override attributes, for example:
   #
