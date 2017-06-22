@@ -7,12 +7,17 @@ class EventsController < ApplicationController
   def index
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
-
+  # разобраться
   def create
-    event.user_id = current_user.id
-    if event.save
-      redirect_to event, notice: 'Event was successfully created.'
+    if event.date > DateTime.now
+      event.user_id = current_user.id
+      if event.save
+        redirect_to event, notice: 'Event was successfully created.'
+      else
+        render :new
+      end
     else
+      event.errors.add(:date, "The event must be created one hour before it starts!")
       render :new
     end
   end

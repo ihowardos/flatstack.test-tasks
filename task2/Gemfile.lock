@@ -67,6 +67,7 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.3)
+    byebug (9.0.6)
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -215,6 +216,7 @@ PLATFORMS
 DEPENDENCIES
   activemodel-serializers-xml!
   bootstrap-sass (~> 3.3.6)
+  byebug
   coffee-rails (~> 4.2)
   decent_decoration
   decent_exposure
