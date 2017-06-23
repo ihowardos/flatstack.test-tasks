@@ -1,4 +1,4 @@
-= month_calendar do |date|
+= month_calendar start_date_param: :date do |date|
   = link_to date.day, all_events_path(date: date), style:"float:left;"
   -if event.all_events_count(date) != 0
     span class="badge" style="float:right; background-color: red;" #{event.all_events_count(date)}
