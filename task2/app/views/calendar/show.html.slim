@@ -9,7 +9,6 @@
 .row
   .col-md-12
     = calendar @date do |date|
-      .test
-        = date.day
+      = link_to date.day, all_events_path(date: date)
     end
 

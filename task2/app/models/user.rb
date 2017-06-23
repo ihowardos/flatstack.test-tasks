@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :events
+
+  validates :name, :surname, presence: true, length: { in: 2..16 }
 end

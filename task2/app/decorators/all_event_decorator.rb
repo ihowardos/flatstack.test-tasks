@@ -1,4 +1,4 @@
-class CalendarDecorator < Draper::Decorator
+class AllEventDecorator < Draper::Decorator
   delegate_all
 
   # Define presentation-specific methods here. Helpers are accessed through
