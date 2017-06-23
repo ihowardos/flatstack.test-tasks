@@ -5,11 +5,7 @@
 end
 
 -if !params[:date].nil?
-  -if event.event_today?(params[:date])
-    h1 Events for today
-  -else
-    h1 Events for #{params[:date]}
-  end
+  h2 = event.message(params[:date])
 
   br
 
@@ -23,12 +19,10 @@ end
     tbody
       - events.each do |event|
         tr
-          td = link_to event.title, event_path(event)
+          td = link_to event.title, edit_event_path(event)
           td = event.description
           td = event.date
-
-end
-
+  end
 
 
 

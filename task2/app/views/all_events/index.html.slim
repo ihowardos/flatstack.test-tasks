@@ -5,11 +5,7 @@
 end
 
 -if !params[:date].nil?
-  -if event.event_today?(params[:date])
-    h1 Events for today
-  -else
-    h1 Events for #{params[:date]}
-  end
+  h2 = event.message(params[:date])
 
   br
 

@@ -4,6 +4,12 @@ class EventsController < ApplicationController
   expose_decorated :event
   expose_decorated :events, -> { fetch_events }
 
+  def edit
+    if current_user.id != event.user_id || current_user.nil?
+      redirect_to event, notice: "You don't have permission!"
+    end
+  end
+
   # разобраться
   def create
     if event.date > DateTime.now
