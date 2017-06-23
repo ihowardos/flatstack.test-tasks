@@ -4,7 +4,9 @@
       <div class="well controls">
         <div class="calendar-heading">
           <%= link_to t('simple_calendar.previous', default: '<'), calendar.url_for_previous_view, class: "btn btn-default", style:"float: left" %>
-          <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+          <strong>
+            <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+          </strong>
           <%= link_to t('simple_calendar.next', default: '>'), calendar.url_for_next_view, class: "btn btn-default", style:"float: right" %>
         </div>
       </div>
