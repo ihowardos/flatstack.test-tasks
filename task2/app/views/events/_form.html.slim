@@ -8,10 +8,11 @@
 
   .form-group
     = f.label :title
-    = f.text_field :title, class:"form-control"
+    = f.text_field :title, class:"form-control", maxlength:"32", autofocus:true, required:true
   .form-group
     = f.label :description
-    = f.text_area :description, class:"form-control"
+    = f.text_area :description, class:"form-control", maxlength:"256", autofocus:true, required:true
+        Table Data
   .form-group
     = f.label :date
     br

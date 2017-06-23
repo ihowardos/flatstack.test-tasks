@@ -10,4 +10,13 @@ class AllEventDecorator < Draper::Decorator
   #     end
   #   end
 
+  def all_events_count(date)
+    events = Event..where('CAST(date AS text) LIKE ?', "#{date}%")
+      .order(:date) if date
+    events.count
+  end
+
+  def event_today?(date)
+    date.to_date.today?
+  end
 end

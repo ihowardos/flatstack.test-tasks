@@ -4,9 +4,6 @@ class EventsController < ApplicationController
   expose_decorated :event
   expose_decorated :events, -> { fetch_events }
 
-  def index
-    @date = params[:date] ? Date.parse(params[:date]) : Date.today
-  end
   # разобраться
   def create
     if event.date > DateTime.now
@@ -37,7 +34,8 @@ class EventsController < ApplicationController
 
   private
     def fetch_events
-      events = Event.where(user_id: current_user.id) if !current_user.nil?
+      events = Event.where(user_id: current_user.id).where('CAST(date AS text) LIKE ?', "#{params[:date]}%")
+      .order(:date) if params[:date] && !current_user.nil?
     end
 
     def event_params

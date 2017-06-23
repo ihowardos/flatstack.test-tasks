@@ -1,27 +1,30 @@
-table class="table table-hover"
-h1 Listing events
+= month_calendar do |date|
+  = link_to date.day, all_events_path(date: date), style:"float:left;"
+  -if event.all_events_count(date) != 0
+    span class="badge" style="float:right; background-color: red;" #{event.all_events_count(date)}
+end
 
-table
-  thead
-    tr
-      th Title
-      th Description
-      th Date
-      th
-      th
-      th
+-if !params[:date].nil?
+  -if event.event_today?(params[:date])
+    h1 Events for today
+  -else
+    h1 Events for #{params[:date]}
+  end
 
-  tbody
-    - events.each do |event|
+  br
+
+  table class="table table-bordered"
+    thead
       tr
-        td = event.title
-        td = event.description
-        td = event.date
-        td = link_to 'Show', event
-        td = link_to 'Edit', edit_event_path(event)
-        td = link_to 'Destroy', event, data: { confirm: 'Are you sure?' }, method: :delete
+        th Title
+        th Description
+        th Date
 
-br
+    tbody
+      - events.each do |event|
+        tr
+          td = link_to event.title, event_path(event)
+          td = event.description
+          td = event.date
 
-= link_to 'New Event', new_event_path if !current_user.nil?
-
+end
