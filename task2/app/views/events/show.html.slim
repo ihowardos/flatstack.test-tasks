@@ -1,15 +1,22 @@
 p#notice = notice
 
-p
-  strong Title:
-  = event.title
-p
-  strong Description:
-  = event.description
-p
-  strong Date:
-  = event.date
+.row
+  .col-md-6.col-md-offset-3
+    .panel.panel-default
+      .panel-body
+        p
+          strong Title:
+          = "  #{event.title}"
+        p
+          strong Description:
+          = " #{event.description}"
+        p
+          strong Date:
+          = " #{event.date}"
 
-= link_to 'Edit', edit_event_path(event)
-'  |
-= link_to 'Back', events_path
+        p
+          strong Author:
+          '
+          =link_to event.get_username(event.user_id), user_path(event.user_id)
+
+        = link_to 'Back', events_path
