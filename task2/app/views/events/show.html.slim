@@ -11,12 +11,19 @@ p#notice = notice
           strong Description:
           = " #{event.description}"
         p
-          strong Date:
+          strong Start date:
           = " #{event.date}"
+
+        p
+          strong End date:
+          = " #{event.end_date}"
+
 
         p
           strong Author:
           '
           =link_to event.get_username(event.user_id), user_path(event.user_id)
+
+        = event.recurring
 
         = link_to 'Back', events_path

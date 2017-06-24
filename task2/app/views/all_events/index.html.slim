@@ -24,3 +24,11 @@ end
           td = event.date
 
 end
+
+
+= month_calendar events: @calendar_events do |day, events|
+  = day.to_s(:long)
+  - events.each do |event|
+    = link_to event.title, event_path(event.id, time: event.date)
+  end
+end

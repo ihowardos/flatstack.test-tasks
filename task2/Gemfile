@@ -19,6 +19,7 @@ gem 'decent_decoration'
 gem 'draper', github: 'audionerd/draper', branch: 'rails5'
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
 gem 'simple_calendar'
+gem 'recurring_select', github: "RundownApp/recurring_select"
 
 group :development, :test do
   gem 'byebug'

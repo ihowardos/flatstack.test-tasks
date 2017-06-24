@@ -10,10 +10,10 @@ class EventsController < ApplicationController
     end
   end
 
-  # разобраться
   def create
     if event.date > DateTime.now
       event.user_id = current_user.id
+      event.rule_monthly
       if event.save
         redirect_to event, notice: 'Event was successfully created.'
       else
@@ -40,11 +40,13 @@ class EventsController < ApplicationController
 
   private
     def fetch_events
+      events = Event.all
       events = Event.where(user_id: current_user.id).where('CAST(date AS text) LIKE ?', "#{params[:date]}%")
       .order(:date) if params[:date] && !current_user.nil?
+      events
     end
 
     def event_params
-      params.require(:event).permit(:title, :description, :date)
+      params.require(:event).permit(:title, :description, :date, :end_date, :recurring)
     end
 end

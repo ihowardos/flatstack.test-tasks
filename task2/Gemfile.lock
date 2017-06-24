@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/RundownApp/recurring_select.git
+  revision: b934e8d1fb20eb101086d1b03ecd766c97826eae
+  specs:
+    recurring_select (2.0.0)
+      coffee-rails (>= 3.1)
+      ice_cube (>= 0.11)
+      jquery-rails (>= 3.0)
+      rails (>= 3.2)
+      sass-rails (>= 4.0)
+
+GIT
   remote: git://github.com/audionerd/draper.git
   revision: e816e0e5876b76c648c0928f1c3f2aa2c7a3d1f2
   branch: rails5
@@ -94,6 +105,7 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.1)
+    ice_cube (0.16.1)
     jbuilder (2.6.4)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2)
@@ -232,6 +244,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.2)
+  recurring_select!
   sass-rails (~> 5.0)
   simple_calendar
   slim-rails
