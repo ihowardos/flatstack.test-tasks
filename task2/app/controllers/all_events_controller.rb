@@ -4,13 +4,23 @@ class AllEventsController < ApplicationController
 
   def index
     events = Event.all
-    @calendar_events = events.flat_map{ |e| e.calendar_events(params.fetch(:start_time, Time.zone.now).to_date) }
   end
 
   private
     def fetch_events
-      events = Event.where('CAST(date AS text) LIKE ?', "#{params[:date]}%")
-      .order(:date) if params[:date]
-    end
+      # Как работать с ActiveRecord с вложенными хэшами?
+      # events = Event.where('CAST(date AS text) LIKE ?', "#{params[:date]}%").order(:date) if params[:date]
+      events = []
 
+      Event.all.each do |event|
+        if event.recurring.nil?
+          events << event if event.date.beginning_of_day == params[:date]
+        else
+          event.recurring[:time].each do |time|
+            events << event if time.beginning_of_day == params[:date]
+          end
+        end
+      end
+      events
+    end
 end
