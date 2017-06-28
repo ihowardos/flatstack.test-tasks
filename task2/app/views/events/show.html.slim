@@ -16,7 +16,7 @@ p#notice = notice
 
         p
           strong End date:
-          = " #{event.end_date}"
+          = " #{event.end_date.end_of_day}"
 
         p
           strong Author:
@@ -37,9 +37,8 @@ p#notice = notice
    -else
     .no-comment.col-md-12.text-center
      .thumbnail.col-md-10.col-md-offset-1
-        p Комментариев нет
+        p No comments
   .col-md-12.text-center
     - if current_user == nil
-      =link_to('Войдите', new_user_session_path)
-      |, чтобы оставить комментарий
-
+      =link_to('Sign in', new_user_session_path)
+      | to leave comment
