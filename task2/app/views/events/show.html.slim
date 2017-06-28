@@ -18,7 +18,6 @@ p#notice = notice
           strong End date:
           = " #{event.end_date}"
 
-
         p
           strong Author:
           '
@@ -43,3 +42,4 @@ p#notice = notice
     - if current_user == nil
       =link_to('Войдите', new_user_session_path)
       |, чтобы оставить комментарий
+

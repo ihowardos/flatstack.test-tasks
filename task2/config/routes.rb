@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :comments, shallow: true, only: [:create, :update, :destroy]
   end
 
+
   devise_for :users, :controllers => { registrations: 'users/registrations' }
 
   get 'user/:id', to: 'profiles#show', as: 'user'

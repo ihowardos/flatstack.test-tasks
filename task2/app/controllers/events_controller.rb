@@ -42,10 +42,8 @@ class EventsController < ApplicationController
 
   private
     def fetch_events
-      events = Event.all
       events = Event.where(user_id: current_user.id).where('CAST(date AS text) LIKE ?', "#{params[:date]}%")
       .order(:date) if params[:date] && !current_user.nil?
-      events
 
 
       #events = []
