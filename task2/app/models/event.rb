@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :user
+  has_many :comments
 
   validates :title, :description, :date, presence: true
   validates :title, length: { in: 4..32 }

@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :events
 
   validates :name, :surname, presence: true, length: { in: 2..16 }
+
+  def user_name
+    "#{name} #{surname}"
+  end
 end

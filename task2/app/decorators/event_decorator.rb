@@ -11,22 +11,22 @@ class EventDecorator < Draper::Decorator
   #   end
 
   def events_count(date, current_user_id)
-    # events = Event.where(user_id: current_user_id).where('CAST(date AS text) LIKE ?', "#{date}%")
-    #   .order(:date) if date
-    # events.count
+    events = Event.where(user_id: current_user_id).where('CAST(date AS text) LIKE ?', "#{date}%")
+      .order(:date) if date
+    events.count
 
-    events = []
+    #events = []
 
-      Event.all.each do |event|
-        if event.recurring.nil?
-          events << event if event.date.beginning_of_day == date.beginning_of_day
-        else
-          event.recurring[:time].each do |time|
-            events << event if time.beginning_of_day == date.beginning_of_day
-          end
-        end
-      end
-      events.count
+    #  Event.all.each do |event|
+    #    if event.recurring.nil?
+    #      events << event if event.date.beginning_of_day == date.beginning_of_day
+    #    else
+    #      event.recurring[:time].each do |time|
+    #        events << event if time.beginning_of_day == date.beginning_of_day
+    #      end
+    #    end
+    #  end
+    #  events.count
   end
 
    def all_events_count(date)
