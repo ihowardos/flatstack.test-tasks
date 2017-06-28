@@ -11,8 +11,12 @@ p#notice = notice
           strong Description:
           = " #{event.description}"
         p
-          strong Date:
+          strong Start date:
           = " #{event.date}"
+
+        p
+          strong End date:
+          = " #{event.end_date}"
 
         p
           strong Author:
@@ -20,3 +24,22 @@ p#notice = notice
           =link_to event.get_username(event.user_id), user_path(event.user_id)
 
         = link_to 'Back', events_path
+
+
+.row
+  .col-md-6.col-md-offset-3
+    = render "comments/form" if user_signed_in?
+    br
+
+  .comments
+   -if event.comments.exists?
+    = render event.comments.order("created_at DESC")
+   -else
+    .no-comment.col-md-12.text-center
+     .thumbnail.col-md-10.col-md-offset-1
+        p Комментариев нет
+  .col-md-12.text-center
+    - if current_user == nil
+      =link_to('Войдите', new_user_session_path)
+      |, чтобы оставить комментарий
+

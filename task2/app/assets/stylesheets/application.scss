@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require recurring_select
  *
  */
 
@@ -18,3 +19,4 @@
 @import "scaffolds.scss";
 @import "profiles.scss";
 @import "simple_calendar.scss";
+@import "comments.scss";

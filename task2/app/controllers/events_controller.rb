@@ -4,16 +4,18 @@ class EventsController < ApplicationController
   expose_decorated :event
   expose_decorated :events, -> { fetch_events }
 
+  expose :comment, -> { Comment.new }
+
   def edit
     if current_user.id != event.user_id || current_user.nil?
       redirect_to event, notice: "You don't have permission!"
     end
   end
 
-  # разобраться
   def create
     if event.date > DateTime.now
       event.user_id = current_user.id
+      event.rule_type
       if event.save
         redirect_to event, notice: 'Event was successfully created.'
       else
@@ -42,9 +44,22 @@ class EventsController < ApplicationController
     def fetch_events
       events = Event.where(user_id: current_user.id).where('CAST(date AS text) LIKE ?', "#{params[:date]}%")
       .order(:date) if params[:date] && !current_user.nil?
+
+
+      #events = []
+
+      #Event.all.each do |event|
+      #  if event.recurring.nil?
+      #    events << event if event.date.beginning_of_day == params[:date] && current_user.id == event.user_id
+      #  else
+      #    event.recurring[:time].each do |time|
+      #      events << event if time.beginning_of_day == params[:date] && current_user.id == event.user_id
+      #    end
+      #  end
+      # end
     end
 
     def event_params
-      params.require(:event).permit(:title, :description, :date)
+      params.require(:event).permit(:title, :description, :date, :end_date, :recurring)
     end
 end

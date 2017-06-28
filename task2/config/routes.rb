@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :events
+  resources :events do
+    resources :comments, shallow: true, only: [:create, :update, :destroy]
+  end
+
 
   devise_for :users, :controllers => { registrations: 'users/registrations' }
 

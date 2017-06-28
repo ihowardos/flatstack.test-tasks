@@ -14,9 +14,19 @@
     = f.text_area :description, class:"form-control", maxlength:"256", autofocus:true, required:true
         Table Data
   .form-group
-    = f.label :date
+    = f.label 'Start date'
     br
-    = f.datetime_select :date, :minute_step => 15, :default => Time.now + 1.hour
+    = f.datetime_select :date, :minute_step => 15, :default => Time.now + 1.hour, start_year: Time.now.year
+
+    .form-group
+    = f.label :end_date
+    br
+    = f.datetime_select :end_date, discard_hour:true, start_year: Time.now.year
+
+  .form-group
+    = f.label :recurring
+    br
+    = f.select_recurring :recurring, nil, allow_blank:true
   .actions
     = f.submit "Create event", class:"btn btn-success"
 

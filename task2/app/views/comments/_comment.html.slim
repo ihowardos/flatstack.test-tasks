@@ -1,0 +1,10 @@
+.container
+  .panel.panel-default.comment
+    .panel-heading.comment-heading
+      .comment-author style="float:left;"
+        = link_to comment.user_name, user_path(comment.user_id)
+      .comment-time style="float:right;"
+        = comment.created_at_h
+      br
+    .panel-body
+      = comment.text
